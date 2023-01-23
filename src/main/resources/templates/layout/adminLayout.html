@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:fragment="layout(main)" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>AdminLayout</title>
     <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark text-light">
-    <a href="#" class="navbar-brand"><i class="fa-solid fa-book-open"></i></a>
+    <a href="#" class="navbar-brand"><i class="fa-regular fa-books"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,20 +18,26 @@
     <div class="collapse navbar-collapse" id="myNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="@{/}" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Category</a>
+                <a th:href="@{/admin/category/all}" class="nav-link">Category</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Authors</a>
+                <a th:href="@{/admin/author-list}" class="nav-link">Authors</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Books</a>
+                <a th:href="@{/admin/book/all}" class="nav-link">Books</a>
             </li>
         </ul>
     </div>
 </nav>
+
+<div th:replace="${main}"></div>
+
+<footer class="bg-dark">
+
+</footer>
 
 
 

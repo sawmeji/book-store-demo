@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html th:replace="layout/adminLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
 <body>
+<main role="main">
 
+    <div class="container my-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-8">
+                <div class="card text-center">
+                    <div class="card-header bg-dark text-white">
+                        <h3>Category Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/admin/category-form}" th:object="${category}" method="post">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Category Name</label>
+                                <input type="text" id="name"
+                                       th:classappend="${#fields.hasErrors('categoryName')} ? 'is-invalid'"
+                                       th:field="*{categoryName}" class="form-control">
+                                <small class="invalid-feedback" th:if="${#fields.hasErrors('categoryName')}"
+                                       th:errors="*{categoryName}"></small>
+                            </div>
+
+                            <input type="submit" class="btn btn-dark btn-lg" value="Save Category">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
 </body>
 </html>

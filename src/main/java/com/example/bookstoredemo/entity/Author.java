@@ -1,6 +1,7 @@
 package com.example.bookstoredemo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,6 +15,7 @@ import java.util.List;
 @Setter
 public class Author extends IdClass{
 
+    @NotEmpty(message = "Name cannot be empty!")
     private String name;
 
     @DateTimeFormat(pattern = "yy-MM-dd")

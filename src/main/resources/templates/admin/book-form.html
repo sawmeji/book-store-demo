@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html th:replace="layout/adminLayout :: layout(~{::main})" lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<main role="main">
+
+    <div class="container my-5">
+        <div class="row justify-content-center align-content-center">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h3>Book Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/admin/book-form}" th:object="${book}" method="post">
+                            <div class="form-group">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" id="title" class="form-control"
+                                th:classappend="${#fields.hasErrors('title')}"
+                                th:field="*{title}">
+                                <small th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="invalid-feedback" ></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="yearPublished" class="form-label">Year Published</label>
+                                <input type="date" id="yearPublished"
+                                       th:field="*{yearPublished}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="publisher" class="form-label">Publisher</label>
+                                <input type="text" id="publisher" class="form-control"
+                                       th:classappend="${#fields.hasErrors('publisher')}"
+                                       th:field="*{publisher}">
+                                <small th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}" class="invalid-feedback" ></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="number" id="price" class="form-control" step="any"
+                                       th:classappend="${#fields.hasErrors('price')}"
+                                       th:field="*{price}">
+                                <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="invalid-feedback" ></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity" class="form-label">Quantity</label>
+                                <input type="number" id="quantity" class="form-control"
+                                       th:classappend="${#fields.hasErrors('quantity')}"
+                                       th:field="*{quantity}">
+                                <small th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="invalid-feedback" ></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="genre" class="form-label">Genre</label>
+                                <input type="text" id="genre" class="form-control"
+                                       th:classappend="${#fields.hasErrors('genre')}"
+                                       th:field="*{genre}">
+                                <small th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}" class="invalid-feedback" ></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="imgUrl" class="form-label">imgUrl</label>
+                                <input type="text" id="imgUrl" class="form-control"
+                                       th:field="*{imgUrl}">
+                            </div>
+                            <div class="form-group">
+                                <label for="description" class="form-label">Description</label>
+                                <input type="text" id="description" class="form-control"
+                                       th:field="*{description}" cols="30" rows="3">
+                            </div>
+                            <div class="form-group">
+                                <label for="author" class="form-label">Author</label>
+                                <select id="author" class="form-control" th:field="*{author.id}">
+                                    <option th:each="au : ${authors}" th:text="${au.name}" th:value="${au.id}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select name="" id="category" class="form-control" th:field="*{category.id}">
+                                    <option th:each="cat : ${categories}" th:text="${cat.categoryName}" th:value="${cat.id}"></option>
+                                </select>
+                            </div>
+                            <input type="submit" value="Save Book" class="btn btn-dark btn-block btn-lg">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>
