@@ -58,3 +58,11 @@ public class BookController {
 
 //https://source.unsplash.com/366x200/?nature.water
 //https://source.unsplash.com/366x200/?book
+//https://source.unsplash.com/366x200/?ocean
+//https://source.unsplash.com/366x200/?coffee
+//https://source.unsplash.com/366x200/?tulip
+//https://source.unsplash.com/366x200/?lily
+//https://source.unsplash.com/366x200/?flower
+//https://source.unsplash.com/366x200/?latte
+
+

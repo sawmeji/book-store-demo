@@ -5,8 +5,8 @@
 
     <div class="container my-5">
         <div class="row justify-content-center align-content-center">
-            <div class="col">
-                <div class="card">
+            <div class="col-8">
+                <div class="card shadow">
                     <div class="card-header bg-dark text-white">
                         <h3>Book Form</h3>
                     </div>
@@ -74,7 +74,7 @@
                                     <option th:each="cat : ${categories}" th:text="${cat.categoryName}" th:value="${cat.id}"></option>
                                 </select>
                             </div>
-                            <input type="submit" value="Save Book" class="btn btn-dark btn-block btn-lg">
+                            <input type="submit" value="Save Book" class="btn btn-dark btn-lg">
                         </form>
                     </div>
                 </div>

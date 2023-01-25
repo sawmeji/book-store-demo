@@ -6,38 +6,42 @@
     <div class="container my-5">
         <div class="row justify-content-center align-content-center">
             <div class="col">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-header bg-dark text-white">
                         <h3>Book List</h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Title</th>
-                                <th>Year Published</th>
-                                <th>Publisher</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Genre</th>
-                                <th>Img</th>
-                                <th>Description</th>
-                            </tr></thead>
-                            <tbody>
-                            <tr th:each="bo : ${books}">
-                                <td th:text="${bo.id}"></td>
-                                <td th:text="${bo.title}"></td>
-                                <td th:text="${bo.yearPublished}"></td>
-                                <td th:text="${bo.publisher}"></td>
-                                <td th:text="${bo.price}"></td>
-                                <td th:text="${bo.quantity}"></td>
-                                <td th:text="${bo.genre}"></td>
-                                <td th:text="${bo.imgUrl}"></td>
-                                <td th:text="${bo.description}"></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive-sm">
+                            <table class="table table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Title</th>
+                                    <th>Year Published</th>
+                                    <th>Publisher</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Genre</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Author</th>
+                                </tr></thead>
+                                <tbody>
+                                <tr th:each="bo : ${books}">
+                                    <td th:text="${bo.id}"></td>
+                                    <td th:text="${bo.title}"></td>
+                                    <td th:text="${bo.yearPublished}"></td>
+                                    <td th:text="${bo.publisher}"></td>
+                                    <td th:text="${'$'+bo.price}"></td>
+                                    <td th:text="${bo.quantity}"></td>
+                                    <td th:text="${bo.genre}"></td>
+                                    <td th:text="${bo.description}"></td>
+                                    <td th:text="${bo.category.categoryName}"></td>
+                                    <td th:text="${bo.author.name}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <a th:href="@{/admin/book-form}" class="btn btn-dark btn-block btn-lg">New Book</a>
