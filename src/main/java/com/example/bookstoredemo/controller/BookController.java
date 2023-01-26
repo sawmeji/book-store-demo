@@ -59,4 +59,10 @@ public class BookController {
         return books;
     }
 
+    @GetMapping("/add-to-cart-from")
+    public String addToCartFrom(@RequestParam("id") int id){
+        cartService.addToCart(id);
+        return "redirect:/user/book/all";
+    }
+
 }

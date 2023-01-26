@@ -44,4 +44,8 @@ public class CartService {
     public void removeFromCart(BookDto bookDto) {
         cartBean.removeBook(bookDto);
     }
+
+    public void clearCart(){
+        cartBean.clearCart();
+    }
 }

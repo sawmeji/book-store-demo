@@ -42,4 +42,10 @@ public class CartController {
         return "cart-view";
     }
 
+    @GetMapping("/clear")
+    public String clearCart(){
+        cartService.clearCart();
+        return "redirect:/cart/view";
+    }
+
 }

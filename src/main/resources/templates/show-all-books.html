@@ -11,6 +11,7 @@
             <h3 class="card-title" th:text="${bo.title}"></h3>
             <div class="d-flex justify-content-between p-3">
               <p class="card-title" th:text="${'$'+bo.price}"></p>
+              <p class="card-title"><a th:href="@{'/user/add-to-cart-from?id='+${bo.id}}">Add to Cart</a></p>
               <p class="card-title"><a th:href="@{'/user/book?id='+${bo.id}}">Details</a></p>
             </div>
           </div>
