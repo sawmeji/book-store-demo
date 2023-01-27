@@ -6,6 +6,7 @@ import com.example.bookstoredemo.entity.Book;
 import com.example.bookstoredemo.service.CartService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,22 @@ public class BookController {
     @PostConstruct
     public void init() {
         books = bookDao.findAll();
+    }
+
+    @GetMapping("/own-library")
+    public String showAllUserBooks(Authentication authentication, Model model){
+        /*
+        * name
+        * orderbook list
+        * */
+        if(authentication!=null) {
+            String name = authentication.getName();
+            model.addAttribute("name", name);
+            model.addAttribute("books", cartService.listOrderBookByUserName(name));
+        }else {
+            throw new RuntimeException("Not Login Error!");
+        }
+        return "own-library";
     }
 
     @GetMapping("/book/all")

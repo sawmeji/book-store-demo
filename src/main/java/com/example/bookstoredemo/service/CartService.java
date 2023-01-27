@@ -69,6 +69,10 @@ public class CartService {
         cartBean.clearCart();
     }
 
+    public List<OrderBook> listOrderBookByUserName(String name){
+        return customerOrderBookDao.findOrderBookByCustomerName(name);
+    }
+
     @Transactional
     public void register(Customer customer, Set<BookDto> carts) {
 
@@ -85,6 +89,7 @@ public class CartService {
             }
 
             customerOrderBookDao.save(customerOrderBook);
+            clearCart();
     }
 
     private OrderBook toOrderBook(BookDto bookDto){
