@@ -3,28 +3,35 @@
 <body>
 <main role="main">
     <div class="container my-4 bg-light">
+        <form th:action="@{/cart/checkout}" th:object="${bookDto}" method="post">
         <div th:with="items = ${carts}">
             <div th:if="${!items.isEmpty()}">
-                <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="ca : ${carts}">
-                        <td th:text="${ca.id}"></td>
-                        <td th:text="${ca.title}"></td>
-                        <td th:text="${ca.author.name}"></td>
-                        <td th:text="${'$'+ca.price}"></td>
-                        <td><a th:href="@{'/cart/delete?id='+${ca.id}}" class="btn btn-outline-danger">Delete</a></td>
-                    </tr>
-                    </tbody>
-                </table>
+
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="ca : ${carts}">
+                            <td th:text="${ca.id}"></td>
+                            <td th:text="${ca.title}"></td>
+                            <td th:text="${ca.author.name}"></td>
+                            <td th:text="${'$'+ca.price}"></td>
+                            <td><input type="number" class="form-check" th:field="*{itemList}" size="5" min="1"></td>
+                            <td th:text="${ca.price}"></td>
+                            <td><a th:href="@{'/cart/delete?id='+${ca.id}}" class="btn btn-outline-danger">Delete</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
             </div>
             <div th:unless="${!items.isEmpty()}">
                 <h1 class="text-info text-center p-3">No Content</h1>
@@ -33,11 +40,12 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="#" class="btn btn-outline-primary mr-2">Check Out</a>
+                <input type="submit" value="Check Out" class="btn btn-outline-primary mr-2">
                 <a th:href="@{/user/book/all}" class="btn btn-outline-primary mr-2">Continue Shopping</a>
-                <a th:href="@{/cart/clear}" class="btn btn-outline-primary mr-2">Clear Cart</a>
+                <a th:href="@{/cart/clear}" class="btn btn-outline-primary mr-2\">Clear Cart</a>
             </div>
         </div>
+        </form>
     </div>
 </main>
 </body>
